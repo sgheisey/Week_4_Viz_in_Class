@@ -1,14 +1,18 @@
 ---
+name: Smokey Heisey
 title: "Visualize Data"
+output: github_document
 ---
 
-## Your Turn 0
 
-Add a setup chunk that loads the tidyverse packages.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment="")
+library(tidyverse)
+```
 
 
 ```{r}
-mpg
+#mpg
 ```
 
 
@@ -17,7 +21,8 @@ mpg
 Run the code on the slide to make a graph. Pay strict attention to spelling, capitalization, and parentheses!
 
 ```{r}
-
+ggplot(data = mpg) +
+  geom_point (mapping = aes(x = displ, y = hwy))
 ```
 
 
@@ -27,7 +32,7 @@ Replace this scatterplot with one that draws boxplots. Use the cheatsheet. Try y
 
 ```{r}
 ggplot(data = mpg) +
-  geom_point(mapping = aes(x = class, y = hwy))
+ geom_boxplot(mapping = aes(x = class, y = hwy))
 ```
 
 
@@ -36,7 +41,8 @@ ggplot(data = mpg) +
 Make a histogram of the `hwy` variable from `mpg`. Hint: do not supply a y variable.
 
 ```{r}
-
+ggplot(data=mpg) +
+  geom_histogram(mapping = aes(hwy))
 ```
 
 ## Your Turn 4
@@ -44,7 +50,8 @@ Make a histogram of the `hwy` variable from `mpg`. Hint: do not supply a y varia
 Use the help page for `geom_histogram` to make the bins 2 units wide.
 
 ```{r}
-
+ggplot(data=mpg) +
+  geom_histogram(mapping = aes(hwy), binwidth = 2)
 ```
 
 
@@ -54,9 +61,27 @@ Add `color`, `size`, `alpha`, and `shape` aesthetics to your graph. Experiment.
 
 ```{r}
 ggplot(data = mpg) +
-  geom_point(mapping = aes(x = displ, y = hwy))
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+  
 ```
 
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, size = class))
+  
+```
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, shape = class))
+  
+```
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
+  
+```
 ## Help Me
 
 What do `facet_grid()` and `facet_wrap()` do? 
